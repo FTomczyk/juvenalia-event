@@ -1,0 +1,982 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #FF4081 0%, #FFD600 50%, #FF6F00 100%);
+  color: #fff;
+  scroll-behavior: smooth;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 111, 0, 0.92);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover {
+  color: #FFD600;
+}
+
+.section {
+  padding: 100px 20px 60px;
+  min-height: 100vh;
+  text-align: center;
+  background: linear-gradient(120deg, #FFD600 0%, #FF6F00 100%);
+  border-bottom: 1px solid #FFB300;
+}
+
+.video-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.video-bg video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  top: 0; left: 0;
+}
+
+#home {
+  position: relative;
+  overflow: hidden;
+  background: url('tlogif.gif') no-repeat center center/cover;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+#home .text{
+  position: relative;
+  z-index: 1;
+  bottom: 85px;
+  font-size: 18px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7); /* Added a subtle background for better readability */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+#lineup{
+  padding-top: 70px;
+}
+
+#lineup h2 {
+  font-size: 2.7rem;
+  color: #FF4081;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  text-shadow: 0 3px 14px rgba(0,0,0,0.18);
+  margin-bottom: 28px;
+  text-transform: uppercase;
+}
+
+.artists {
+  padding-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 45px;
+}
+
+.artist-image{
+  width: 20%;
+  border-radius: 10px;
+}
+
+.artist-image:hover {
+  transform: scale(1.08);
+  transition: transform 0.3s ease;
+
+}
+
+#info {
+    padding-top: 70px; /* Istniejący styl */
+    padding-bottom: 50px; /* Dodatkowe wypełnienie na dole dla lepszego odstępu */
+}
+
+/* Jeśli chcesz dodać główny, wyróżniony tytuł dla całej sekcji "Info" */
+/*
+.info-main-title {
+    font-size: 2.5rem;
+    color: #fff;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+}
+*/
+
+.info-card {
+  background: rgba(255, 153, 51, 0.88);
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(255, 111, 0, 0.13);
+  font-size: 1.18rem;
+  border-radius: 10px;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+
+.info-card, .info-card p, .info-card h2, .info-card li, .info-card strong {
+  text-shadow: 0 2px 6px rgba(0,0,0,0.18), 0 0.5px 0 #000;
+}
+
+.info-card h2 {
+  color: #FF4081;
+}
+
+.info-card p, .info-card ul, .info-card li {
+  color: #111;
+}
+
+/* Ogólne styles dla paragrafów w #info, mogą być nadpisane przez bardziej szczegółowe selektory */
+#info p {
+    font-size: 1.1rem; /* Istniejący styl */
+    line-height: 1.7; /* Zwiększona interlinia dla lepszej czytelności */
+    margin-bottom: 15px; /* Zwiększony margines dolny */
+    color: #e0e0e0; /* Jasnoszary kolor tekstu */
+}
+
+.info-card p:last-child {
+    margin-bottom: 0; /* Usunięcie marginesu dolnego z ostatniego paragrafu w karcie */
+}
+
+#info p strong {
+    color: #FF4081; /* Wyróżnienie pogrubionego tekstu kolorem akcentu */
+    font-weight: 600; /* Nieco grubsza czcionka niż domyślne strong */
+}
+
+.attractions-list {
+    list-style: none; /* Usunięcie domyślnych punktorów */
+    padding-left: 0;
+    margin-top: 10px; /* Odstęp od góry, jeśli przed listą był paragraf */
+}
+
+.attractions-list li {
+    font-size: 1.05rem; /* Można dostosować rozmiar */
+    color: #d0d0d0; /* Kolor tekstu elementów listy */
+    line-height: 1.8; /* Interlinia */
+    margin-bottom: 12px; /* Margines dolny */
+    padding-left: 30px; /* Miejsce na ikonę/punktor */
+    position: relative; /* Dla pozycjonowania pseudo-elementu ::before */
+}
+
+.attractions-list li::before {
+    content: "★"; /* Ikona gwiazdki; możesz wybrać inną, np. "✔", "▶" */
+    color: #FF4081; /* Kolor akcentu dla ikony */
+    position: absolute;
+    left: 0;
+    top: 2px; /* Dostosuj dla idealnego wyrównania pionowego z tekstem */
+    font-size: 1.1em; /* Rozmiar ikony */
+}
+
+.info-summary {
+    max-width: 800px;
+    margin: 20px auto 0 auto; /* Odstęp od ostatniej karty, wyśrodkowanie */
+    padding: 20px;
+    text-align: center;
+    /* Opcjonalnie: lekkie tło dla wyróżnienia: background-color: rgba(0,0,0,0.2); */
+    /* Opcjonalnie: separator: border-top: 1px dashed #444; */
+}
+
+.info-summary p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #ccc; /* Nieco ciemniejszy tekst dla podsumowania */
+    font-style: italic; /* Dodanie kursywy dla wyróżnienia */
+    margin-bottom: 0; /* Brak marginesu, jeśli to ostatni element */
+}
+
+/* Styl dla tła (overlay) */
+.modal-overlay {
+  display: none; /* Ukryte domyślnie */
+  position: fixed; /* Pozycja stała względem okna przeglądarki */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75); /* Slightly darker overlay */
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  padding: 20px; /* Add padding for smaller screens */
+}
+
+.modal-content {
+  background-color: #191919;
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+  max-width: 480px;
+  width: 100%;
+  text-align: left;
+  animation: fadeInScale 0.3s ease-out;
+  max-height: 80vh; /* Użyjemy vh dla lepszej responsywności na różnych ekranach */
+  overflow-y: auto; /* Dodana właściwość do przewijania */
+}
+
+.modal-content h2 {
+  margin-bottom: 25px; /* Increased margin */
+  font-size: 26px; /* Slightly larger */
+  color: #fff;
+  text-align: center; /* Center the main title */
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+/* Prosta animacja pojawiania się */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px); /* Added translateY for a subtle slide-in */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Styl dla przycisku zamknięcia (X) */
+.modal-close-btn {
+  position: absolute;
+  top: 15px; /* Adjusted position */
+  right: 20px; /* Adjusted position */
+  font-size: 30px; /* Slightly larger */
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7); /* Softer white */
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.3s ease, transform 0.2s ease; /* Added transform transition */
+}
+.modal-close-btn:hover {
+  color: #FF4081;/* Juwenalia accent color on hover */
+  transform: rotate(90deg); /* Fun little rotation on hover */
+}
+
+/* Form group styling - similar to volunteer form for consistency */
+.modal-content .form-group {
+  margin-bottom: 20px; /* Increased margin */
+  position: relative;
+}
+
+.modal-content .form-group label {
+  display: block;
+  margin-bottom: 8px; /* Increased margin */
+  color: #e0e0e0; /* Lighter grey for labels */
+  font-weight: bold;
+  font-size: 15px; /* Slightly smaller label */
+}
+
+.required-star {
+  color: #FF4081; /* Juwenalia accent color for asterisks */
+  margin-left: 3px;
+  font-weight: bold;
+}
+
+.modal-content .form-group input[type="text"],
+.modal-content .form-group input[type="email"],
+.modal-content .form-group input[type="number"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.modal-content .form-group input:focus {
+  outline: none;
+  border-color: #FF4081;
+  box-shadow: 0 0 0 3px #20203e;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Ticket Options Styling */
+.modal-content .ticket-options {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.2); /* Subtle background for this section */
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-content .ticket-options h3 {
+  font-size: 18px;
+  color: #fff;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.modal-content .ticket-option {
+  margin-bottom: 15px;
+  padding: 15px; /* Add padding to each option */
+  background-color: rgba(255, 255, 255, 0.05); /* Slight background for each option */
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-content .ticket-option:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* Highlight on hover */
+}
+
+.modal-content .ticket-label {
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Vertically align items */
+  cursor: pointer;
+  color: #e0e0e0;
+  font-size: 16px;
+}
+
+.modal-content input[type="radio"] {
+  margin-right: 12px; /* Increased margin */
+  transform: scale(1.2); /* Make radio button slightly larger */
+  accent-color: #FF4081; /* Style radio button itself */
+}
+
+.modal-content .ticket-type-name {
+  flex-grow: 1; /* Allow type name to take available space */
+  font-weight: 500;
+}
+
+.modal-content .ticket-price {
+  font-weight: bold;
+  color: #fff;
+  margin-left: 15px; /* Space before price */
+}
+
+.modal-content .ticket-info {
+  display: block; /* Make it take its own line */
+  font-size: 13px;
+  color: #aaa;
+  margin-left: 28px; /* Align with text, considering radio button size */
+  margin-top: 4px;
+}
+
+/* Quantity Input Specifics */
+.modal-content .quantity-group label {
+  margin-bottom: 8px;
+}
+.modal-content .form-group input[type="number"] {
+  width: 80px; /* Fixed width for quantity */
+  text-align: center;
+  padding: 10px;
+}
+
+
+/* Form Note Styling */
+.modal-content .form-note {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 20px; /* Space before button */
+  text-align: left;
+}
+
+
+.buy-button {
+  width: 100%; /* Make button full width */
+  background-color: #FFD600;
+  color: #FF4081;
+  padding: 15px 20px; /* Increased padding */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 18px; /* Larger font size */
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-top: 10px; /* Reduced top margin as form-note has margin-bottom */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buy-button:hover {
+  background-color: #FF6F00;
+  transform: translateY(-3px); /* Lift effect */
+  box-shadow: 0 6px 15px #d78c01; /* More prominent shadow on hover */
+}
+
+.buy-button .button-text {
+  display: inline-block;
+  /* font-size is inherited from .buy-button */
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.is-visible {
+    display: flex; 
+    align-items: center; /* Ensure vertical centering */
+    justify-content: center; /* Ensure horizontal centering */
+}
+#contact {
+    padding-top: 70px;
+    padding-bottom: 80px; /* Zapewnia odpowiednią przestrzeń na dole sekcji */
+}
+
+#contact h2 {
+    font-size: 2.7rem;
+    color: #FF4081;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-shadow: 0 3px 14px rgba(0,0,0,0.18);
+    margin-bottom: 28px;
+    text-transform: uppercase;
+}
+
+.contact-intro {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #fff;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.18), 0 0.5px 0 #000;
+  font-size: 1.18rem;
+  margin-bottom: 40px;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#contact-form {
+    max-width: 700px;    /* Maksymalna szerokość formularza */
+    margin: 0 auto;      /* Wyśrodkowanie formularza */
+    padding: 30px 35px;  /* Wewnętrzne wypełnienie formularza */
+    background-color: #1c1c1c; /* Lekko jaśniejsze tło niż tło sekcji (#111) */
+    border-radius: 10px; /* Zaokrąglone rogi */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35); /* Wyraźniejszy cień */
+    text-align: left;    /* Wyrównanie tekstu wewnątrz formularza do lewej */
+    border: 1px solid #2f2f2f; /* Subtelna ramka */
+}
+
+#contact-form .form-group {
+    margin-bottom: 22px; /* Odstęp między grupami pól formularza */
+}
+
+#contact-form label {
+    display: block;
+    margin-bottom: 8px;
+    color: #e0e0e0;      /* Kolor etykiet */
+    font-weight: bold;
+    font-size: 0.95rem;  /* Rozmiar czcionki etykiet */
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+    width: 100%;
+    padding: 14px 18px; /* Zwiększony padding dla lepszego wyglądu */
+    border: 1px solid #4a4a4a; /* Ciemniejsza, ale widoczna ramka */
+    border-radius: 6px;
+    background-color: rgba(10, 10, 10, 0.5); /* Ciemne tło pola */
+    color: #fff;         /* Biały kolor tekstu w polach */
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+#contact-form input[type="text"]:focus,
+#contact-form input[type="email"]:focus,
+#contact-form textarea:focus {
+    outline: none;
+    border-color: #FF4081; /* Kolor akcentu na focusie */
+    background-color: rgba(20, 20, 20, 0.5); /* Lekko jaśniejsze tło na focusie */
+    box-shadow: 0 0 0 3px rgba(252, 170, 22, 0.25); /* Poświata w kolorze akcentu */
+}
+
+#contact-form textarea {
+    min-height: 130px;   /* Minimalna wysokość pola tekstowego */
+    resize: vertical;    /* Pozwala na zmianę wysokości, blokuje zmianę szerokości */
+}
+
+.contact-submit-button {
+    width: 100%;
+    background-color: #FFD600; /* Kolor akcentu */
+    color: #FF4081;         /* Czarny tekst dla kontrastu na pomarańczowym tle */
+    padding: 15px 20px;  /* Wypełnienie przycisku */
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.1rem;   /* Rozmiar czcionki przycisku */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    margin-top: 10px;    /* Odstęp nad przyciskiem */
+}
+
+.contact-submit-button:hover {
+    background-color: #FF6F00; /* Jaśniejszy pomarańczowy na hover */
+    transform: translateY(-3px); /* Lekkie uniesienie przycisku */
+    box-shadow: 0 5px 15px rgba(215, 140, 1, 0.45); /* Cień z ciemniejszym odcieniem akcentu */
+}
+footer {
+  background: linear-gradient(90deg, #FF6F00 0%, #FFD600 100%);
+  padding: 1.5rem 2rem ;
+  font-size: 0.9rem;
+}
+footer div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Vertically align footer items */
+  gap: 1rem;
+}
+footer div p{
+  margin-left: auto
+}
+footer #contact-footer{
+  text-decoration: none;
+  color: #fff;
+  transition: color 0.3s;
+}
+footer #contact-footer:hover {
+  color: #FF4081; /* Juwenalia accent color on hover */
+}
+
+#volunteer-gallery {
+    padding-bottom: 50px;
+    text-align: center; 
+}
+
+#volunteer-gallery h2 { /* Zakładając, że masz globalne styles dla h2 w .section */
+    font-size: 2.2rem;   /* Lub dostosuj wg potrzeb */
+    color: #FFD600;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+.volunteer-intro {
+    color: #ccc;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+    padding: 0 15px; /* Padding dla mniejszych ekranów */
+}
+
+.image-carousel-container {
+    width: 90%; 
+    max-width: 990px; /* np. 3 obrazy po 320px + paddingi */
+    margin: 0 auto 40px auto;
+    overflow: hidden;
+    position: relative;
+    background-color: #1a1a1a; /* Tło kontenera, jeśli zdjęcia nie wypełniają go w 100% */
+    padding: 10px 0; /* Wewnętrzny padding góra/dół */
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+}
+
+.image-carousel-track {
+    display: flex;
+    transition: transform 0.8s ease-in-out; /* Animacja przewijania */
+    /* Szerokość zostanie obliczona przez liczbę obrazów * szerokość obrazu */
+}
+
+.carousel-image {
+    /* Każdy obraz zajmuje 1/3 szerokości kontenera */
+    min-width: calc(100% / 3); 
+    box-sizing: border-box;
+    padding: 0 8px; /* Odstępy między obrazami */
+}
+
+.carousel-image img {
+    width: 100%;
+    height: 250px; /* Ustaw stałą wysokość dla jednolitości */
+    object-fit: cover; /* Obrazy będą przycięte, aby wypełnić przestrzeń */
+    display: block;
+    border-radius: 6px; /* Zaokrąglenie rogów obrazków */
+    border: 2px solid #333; /* Opcjonalna ramka wokół zdjęcia */
+}
+
+#volunteer-info-details {
+    padding-top: 50px; 
+    padding-bottom: 60px;
+    text-align: center; 
+}
+
+#volunteer-info-details > h2 { /* Główny tytuł sekcji */
+    font-size: 2.3rem;
+    color: #fff; 
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #FF4081; /* Akcentowe podkreślenie */
+    display: inline-block; /* Aby podkreślenie dopasowało się do szerokości tekstu */
+    padding-bottom: 12px;
+}
+
+.volunteer-block {
+    background-color: #1e1e1e; /* Ciemniejsze tło dla bloków */
+    padding: 28px 35px;
+    margin: 0 auto 35px auto; /* Wyśrodkowanie i margines dolny */
+    max-width: 880px; /* Maksymalna szerokość bloków */
+    border-radius: 12px; /* Zaokrąglone rogi */
+    text-align: left; /* Wyrównanie tekstu w blokach do lewej */
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3); /* Wyraźniejszy cień */
+    border: 1px solid #2c2c2c; /* Subtelna ramka */
+    border-left: 6px solid #383838; /* Grubsza lewa ramka dla akcentu */
+    transition: border-left-color 0.35s ease, transform 0.3s ease; /* Płynne przejścia */
+}
+
+.volunteer-block:hover {
+    border-left-color: #FF4081; /* Zmiana koloru lewej ramki na akcentowy przy najechaniu */
+    transform: translateY(-3px); /* Lekkie uniesienie bloku */
+}
+
+.volunteer-block h3 {
+    font-size: 1.9rem;
+    color: #FF4081; /* Kolor akcentu dla podtytułów */
+    margin-bottom: 22px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #404040; /* Delikatne podkreślenie podtytułu */
+}
+
+.intro-block p, .join-us-block p {
+    font-size: 1.15rem; /* Nieco większa czcionka dla czytelności */
+    line-height: 1.75;
+    color: #e0e0e0; /* Jasnoszary kolor tekstu */
+}
+
+/* Stylizacja listy korzyści */
+.benefits-block {
+    background-color: #242424; /* Nieco inne tło dla wyróżnienia bloku korzyści */
+}
+
+.benefits-list {
+    list-style: none; /* Usunięcie domyślnych punktorów */
+    padding-left: 0;
+}
+
+.benefits-list li {
+    font-size: 1.15rem;
+    color: #d5d5d5;
+    line-height: 1.85;
+    margin-bottom: 15px; /* Zwiększony odstęp między elementami listy */
+    padding-left: 35px; /* Miejsce na niestandardowy punktor/ikonę */
+    position: relative; /* Dla pozycjonowania ::before */
+}
+
+.benefits-list li::before {
+    content: "✔"; /* Możesz użyć innego znaku Unicode np. ★, ▶ lub ikony SVG/FontAwesome */
+    color: #FF4081; /* Kolor akcentu dla punktora */
+    position: absolute;
+    left: 0;
+    top: 1px; /* Dostosuj dla idealnego wyrównania pionowego */
+    font-size: 1.3em; /* Rozmiar punktora */
+    font-weight: bold;
+}
+
+/* Stylizacja bloku z kluczowymi informacjami */
+.key-info-block {
+    /* Możesz dodać lekko zabarwione tło, np. tłem akcentowym z dużą przezroczystością */
+    /* background-color: rgba(252, 170, 22, 0.03); */
+}
+
+.info-item {
+    display: flex;
+    flex-wrap: wrap; /* Zezwolenie na zawijanie na mniejszych ekranach */
+    align-items: center; /* Wyrównanie elementów w pionie */
+    padding: 15px 0; /* Zwiększony padding */
+    border-bottom: 1px solid #383838; /* Separator między informacjami */
+    font-size: 1.15rem;
+}
+.info-item:last-child {
+    border-bottom: none; /* Usunięcie separatora dla ostatniego elementu */
+}
+
+.info-item .info-label {
+    color: #FF4081; /* Kolor akcentu dla etykiet */
+    font-weight: bold;
+    margin-right: 12px; /* Odstęp od wartości */
+    flex-shrink: 0; /* Zapobiega zbytniemu kurczeniu się etykiety */
+}
+/* Jeśli używasz Font Awesome dla ikon w .info-label: */
+/* .info-item .info-label i { 
+    margin-right: 10px;
+    font-size: 1.1em;
+    vertical-align: middle;
+} */
+
+.info-item .info-value {
+    color: #e0e0e0;
+}
+
+/* Przycisk CTA w bloku "Dołącz do nas" (jeśli zostanie dodany) */
+.join-us-block .cta-button {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #FF4081;
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(252,170,22,0.3);
+}
+
+.join-us-block .cta-button:hover {
+    background-color: #FF6F00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(252,170,22,0.4);
+}
+
+/* Tekst podsumowujący na końcu */
+.volunteer-outro {
+    margin-top: 45px;
+    font-size: 1.3rem; /* Większa czcionka dla wyróżnienia */
+    color: #FF4081; /* Kolor akcentu */
+    font-style: italic;
+    font-weight: 500; /* Normalna grubość, ale z kursywą i kolorem */
+}
+
+/* Dostosowania responsywne dla bloku kluczowych informacji */
+@media (max-width: 600px) {
+    #volunteer-info-details > h2 {
+        font-size: 1.9rem; /* Zmniejszenie głównego tytułu na mobilnych */
+    }
+    .volunteer-block {
+        padding: 20px 25px; /* Mniejszy padding bloków na mobilnych */
+        border-left-width: 5px; /* Cieńsza lewa ramka */
+    }
+    .volunteer-block h3 {
+        font-size: 1.6rem; /* Zmniejszenie podtytułów */
+    }
+    .intro-block p, .join-us-block p, .benefits-list li, .info-item {
+        font-size: 1.05rem; /* Nieco mniejsza czcionka dla treści */
+    }
+    .info-item {
+        flex-direction: column; /* Etykieta i wartość jedna pod drugą */
+        align-items: flex-start; /* Wyrównanie do lewej w kolumnie */
+    }
+    .info-item .info-label {
+        margin-bottom: 6px; /* Odstęp między etykietą a wartością */
+    }
+    .volunteer-outro {
+        font-size: 1.15rem;
+    }
+}
+
+/* Przycisk CTA - dostosuj do istniejących stylów przycisków */
+.volunteer-cta-button {
+    display: inline-block;
+    margin-top: 20px; /* Odstęp od karuzeli */
+    background-color: #FF4081;
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 2px 5px rgba(252,170,22,0.3);
+}
+
+.volunteer-cta-button:hover {
+    background-color: #FF6F00;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(252,170,22,0.4);
+}
+
+/* Media query dla mniejszych ekranów - wyświetlanie np. 1 zdjęcia na raz */
+@media (max-width: 768px) {
+    .carousel-image {
+        min-width: calc(100% / 2); /* Dwa zdjęcia na średnich ekranach */
+    }
+    .image-carousel-container {
+        max-width: 660px; /* Dostosuj max-width */
+    }
+}
+
+@media (max-width: 480px) {
+    .carousel-image {
+        min-width: 100%; /* Jedno zdjęcie na małych ekranach */
+        padding: 0 5px; /* Mniejszy padding */
+    }
+    .image-carousel-container {
+        width: 95%;
+        padding: 5px 0;
+    }
+    .carousel-image img {
+        height: 220px; /* Mniejsza wysokość na mobilnych */
+    }
+#volunteer-gallery h2 {
+        font-size: 1.8rem;
+    }
+    .volunteer-intro {
+        font-size: 1rem;
+    }
+}
+
+/* Animacje i stany (float for volunteer button) */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+.submit-button:hover .button-text {
+  animation: float 0.6s ease-in-out infinite;
+}
+
+/* Walidacja (general for inputs if needed, but can be more specific) */
+input:invalid:not(:focus):not(:placeholder-shown) {
+  border-color: #ff6b6b; /* Red for invalid */
+}
+
+.home-events-content{
+  position: absolute;
+  bottom: 85px;
+  font-size: 18px;
+  width: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6); /* Added a subtle background for better readability */
+  padding: 20px;
+}
+/* Responsywność */
+@media (max-width: 600px) {
+  .modal-content {
+    padding: 20px 20px; /* Adjust padding for smaller screens */
+    margin: 10px; /* Ensure it doesn't touch screen edges */
+  }
+  
+  .modal-content h2 {
+    font-size: 22px; /* Smaller title */
+  }
+
+  .modal-content .form-group input[type="text"],
+  .modal-content .form-group input[type="email"],
+  .modal-content .form-group input[type="number"] {
+    padding: 10px 12px;
+    font-size: 15px;
+  }
+
+  .modal-content .ticket-label {
+    font-size: 15px;
+  }
+  .modal-content .ticket-price {
+    font-size: 15px;
+  }
+  .modal-content .ticket-info {
+    font-size: 12px;
+    margin-left: 25px; /* Adjust for smaller radio */
+  }
+  .modal-content input[type="radio"] {
+    transform: scale(1.1);
+    margin-right: 8px;
+  }
+  
+  .buy-button {
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  #home .text { /* Adjust home text on small screens */
+    font-size: 16px;
+    width: 90%;
+    bottom: 40px;
+    padding: 15px;
+  }
+}
+
+.countdown-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  margin-bottom: 10px;
+}
+.countdown-label {
+  font-size: 2.1rem;
+  font-weight: bold;
+  color: #FFD600;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+#countdown-timer {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(30, 20, 40, 0.72);
+  border-radius: 18px;
+  padding: 18px 38px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+  letter-spacing: 2px;
+  display: flex;
+  gap: 10px;
+}
+#countdown-timer span {
+  color: #FF4081;
+  min-width: 38px;
+  display: inline-block;
+  text-align: center;
+}
+@media (max-width: 600px) {
+  .countdown-label { font-size: 1.2rem; }
+  #countdown-timer { font-size: 1.1rem; padding: 10px 12px; }
+  #countdown-timer span { min-width: 22px; }
+}
+
+#info, #info p, #info ul, #info li {
+  color: #fff !important;
+}
+#info strong {
+  color: #FF4081 !important;
+}
+
