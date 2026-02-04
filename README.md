@@ -51,6 +51,6 @@ Tablets (768px-991px)
 Smartphones (≤767px)          
 
 ## Made by:
-Filip Tomczyk
-Jakub Wierzchoń
-Adam Zabłocki
+Filip Tomczyk              
+Jakub Wierzchoń                
+Adam Zabłocki              
