@@ -48,4 +48,9 @@ The website is fully responsive and adapts to:
 Desktops (≥1200px)            
 Laptops (992px-1199px)              
 Tablets (768px-991px)              
-Smartphones (≤767px)              
+Smartphones (≤767px)          
+
+## Made by:
+Filip Tomczyk
+Jakub Wierzchoń
+Adam Zabłocki
